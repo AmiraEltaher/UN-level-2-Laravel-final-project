@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private $columns = [
+
+        'category_name',
+    ];
+
     public function index()
     {
-        // return view('addUserForm');
-        $users = User::get();
-        return view('userList', compact('users'));
+        $categories = Category::get();
+        return view('categoryList', compact('categories'));
     }
 
     /**
@@ -22,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('adduserForm');
+        return view('addCategory');
     }
 
     /**
@@ -30,19 +31,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'fullName' => 'required|string',
-            'userName' => 'required|string',
-            'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
-            'active' => 'boolean',
-        ]);
+        $data = $request->only($this->columns);
+        Category::create($data);
 
-        $data['active'] = isset($request['active']);
-        //$data['published'] = isset($data['published']) ? true : false;
-
-        User::create($data);
-        return redirect('addUserForm');
+        return redirect('categoryList');
     }
 
     /**
@@ -50,6 +42,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
+        //
     }
 
     /**
@@ -57,7 +50,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('editCategory', compact('category'));
     }
 
     /**
@@ -65,7 +59,12 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $data = $request->only($this->columns);
+
+        Category::where('id', $id)->update($data);
+
+        return redirect('categoryList');
     }
 
     /**
@@ -73,6 +72,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Category::where('id', $id)->delete();
+        return redirect('categoryList');
     }
 }
