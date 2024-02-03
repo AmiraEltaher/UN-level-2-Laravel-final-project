@@ -176,211 +176,43 @@
 
 
                 <div class="row">
+                    @foreach($cars->where('active', 1)->reverse()->take(6) as $car)
                     <div class="col-md-6 col-lg-4 mb-4">
 
                         <div class="listing d-block  align-items-stretch">
                             <div class="listing-img h-100 mr-4">
-                                <img src="{{asset('assets/images/car_6.jpg') }}" alt="Image" class="img-fluid">
+
+                                <img src="{{asset('assets/admin/images/'.$car->image) }}" alt="Image" class="img-fluid">
                             </div>
                             <div class="listing-contents h-100">
-                                <h3>Mitsubishi Pajero</h3>
+                                <h3>{{$car->carTitle}}</h3>
                                 <div class="rent-price">
-                                    <strong>$389.00</strong><span class="mx-1">/</span>day
+                                    <strong>${{$car->price}}</strong><span class="mx-1">/</span>day
                                 </div>
                                 <div class="d-block d-md-flex mb-3 border-bottom pb-3">
                                     <div class="listing-feature pr-4">
                                         <span class="caption">Luggage:</span>
-                                        <span class="number">8</span>
+                                        <span class="number">{{$car->luggage}}</span>
                                     </div>
                                     <div class="listing-feature pr-4">
                                         <span class="caption">Doors:</span>
-                                        <span class="number">4</span>
+                                        <span class="number">{{$car->doors}}</span>
                                     </div>
                                     <div class="listing-feature pr-4">
                                         <span class="caption">Passenger:</span>
-                                        <span class="number">4</span>
+                                        <span class="number">{{$car->passengers}}</span>
                                     </div>
                                 </div>
                                 <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                                    <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
+                                    <p>{{$car->content}}</p>
+                                    <p><a href="{{route('single')}}" class="btn btn-primary btn-sm">Rent Now</a></p>
                                 </div>
                             </div>
 
                         </div>
                     </div>
+                    @endforeach
 
-                    <div class="col-md-6 col-lg-4 mb-4">
-
-                        <div class="listing d-block  align-items-stretch">
-                            <div class="listing-img h-100 mr-4">
-                                <img src="{{asset('assets/images/car_5.jpg') }}" alt="Image" class="img-fluid">
-                            </div>
-                            <div class="listing-contents h-100">
-                                <h3>Nissan Moco</h3>
-                                <div class="rent-price">
-                                    <strong>$389.00</strong><span class="mx-1">/</span>day
-                                </div>
-                                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Luggage:</span>
-                                        <span class="number">8</span>
-                                    </div>
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Doors:</span>
-                                        <span class="number">4</span>
-                                    </div>
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Passenger:</span>
-                                        <span class="number">4</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                                    <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-6 col-lg-4 mb-4">
-
-                        <div class="listing d-block  align-items-stretch">
-                            <div class="listing-img h-100 mr-4">
-                                <img src="{{asset('assets/images/car_4.jpg') }}" alt="Image" class="img-fluid">
-                            </div>
-                            <div class="listing-contents h-100">
-                                <h3>Honda Fitta</h3>
-                                <div class="rent-price">
-                                    <strong>$389.00</strong><span class="mx-1">/</span>day
-                                </div>
-                                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Luggage:</span>
-                                        <span class="number">8</span>
-                                    </div>
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Doors:</span>
-                                        <span class="number">4</span>
-                                    </div>
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Passenger:</span>
-                                        <span class="number">4</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                                    <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 mb-4">
-
-                        <div class="listing d-block  align-items-stretch">
-                            <div class="listing-img h-100 mr-4">
-                                <img src="{{asset('assets/images/car_3.jpg') }}" alt="Image" class="img-fluid">
-                            </div>
-                            <div class="listing-contents h-100">
-                                <h3>Skoda Laura</h3>
-                                <div class="rent-price">
-                                    <strong>$389.00</strong><span class="mx-1">/</span>day
-                                </div>
-                                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Luggage:</span>
-                                        <span class="number">8</span>
-                                    </div>
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Doors:</span>
-                                        <span class="number">4</span>
-                                    </div>
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Passenger:</span>
-                                        <span class="number">4</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                                    <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 mb-4">
-
-                        <div class="listing d-block  align-items-stretch">
-                            <div class="listing-img h-100 mr-4">
-                                <img src="{{asset('assets/images/car_2.jpg') }}" alt="Image" class="img-fluid">
-                            </div>
-                            <div class="listing-contents h-100">
-                                <h3>Mazda LaPuta</h3>
-                                <div class="rent-price">
-                                    <strong>$389.00</strong><span class="mx-1">/</span>day
-                                </div>
-                                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Luggage:</span>
-                                        <span class="number">8</span>
-                                    </div>
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Doors:</span>
-                                        <span class="number">4</span>
-                                    </div>
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Passenger:</span>
-                                        <span class="number">4</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                                    <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-6 col-lg-4 mb-4">
-
-                        <div class="listing d-block  align-items-stretch">
-                            <div class="listing-img h-100 mr-4">
-                                <img src="{{asset('assets/images/car_1.jpg') }}" alt="Image" class="img-fluid">
-                            </div>
-                            <div class="listing-contents h-100">
-                                <h3>Buick LaCrosse</h3>
-                                <div class="rent-price">
-                                    <strong>$389.00</strong><span class="mx-1">/</span>day
-                                </div>
-                                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Luggage:</span>
-                                        <span class="number">8</span>
-                                    </div>
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Doors:</span>
-                                        <span class="number">4</span>
-                                    </div>
-                                    <div class="listing-feature pr-4">
-                                        <span class="caption">Passenger:</span>
-                                        <span class="number">4</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                                    <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -483,48 +315,25 @@
                     </div>
                 </div>
                 <div class="row">
+                    @foreach($testimonials->where('published', 1)->reverse()->take(3) as $testimonial)
+
                     <div class="col-lg-4 mb-4 mb-lg-0">
                         <div class="testimonial-2">
                             <blockquote class="mb-4">
-                                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
+                                <p>{{ $testimonial->content}}</p>
                             </blockquote>
                             <div class="d-flex v-card align-items-center">
-                                <img src="{{asset('assets/images/person_1.jpg') }}" alt="Image" class="img-fluid mr-3">
+
+                                <img src="{{asset('assets/admin/images/'.$testimonial->image) }}" alt="Image" class="img-fluid mr-3">
                                 <div class="author-name">
-                                    <span class="d-block">Mike Fisher</span>
-                                    <span>Owner, Ford</span>
+                                    <span class="d-block">{{$testimonial->name}}</span>
+                                    <span>{{ $testimonial->position}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="testimonial-2">
-                            <blockquote class="mb-4">
-                                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
-                            </blockquote>
-                            <div class="d-flex v-card align-items-center">
-                                <img src="{{asset('assets/images/person_2.jpg') }}" alt="Image" class="img-fluid mr-3">
-                                <div class="author-name">
-                                    <span class="d-block">Jean Stanley</span>
-                                    <span>Traveler</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="testimonial-2">
-                            <blockquote class="mb-4">
-                                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, deserunt eveniet veniam. Ipsam, nam, voluptatum"</p>
-                            </blockquote>
-                            <div class="d-flex v-card align-items-center">
-                                <img src="{{asset('assets/images/person_3.jpg') }}" alt="Image" class="img-fluid mr-3">
-                                <div class="author-name">
-                                    <span class="d-block">Katie Rose</span>
-                                    <span>Customer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
                 </div>
             </div>
         </div>

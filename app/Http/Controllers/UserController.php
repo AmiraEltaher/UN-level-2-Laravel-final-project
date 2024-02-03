@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private $columns = [
+        'fullName',
+        'userName',
+        'email',
+        'password',
+        'active',
+
+
+    ];
     public function index()
     {
         // return view('addUserForm');
@@ -22,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('adduserForm');
+        return view('addUser');
     }
 
     /**
@@ -30,19 +36,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
+        $messages = $this->messages();
+
         $data = $request->validate([
             'fullName' => 'required|string',
             'userName' => 'required|string',
             'email' => 'required|email',
             'password' => 'required|min:8|confirmed',
-            'active' => 'boolean',
+
+
         ]);
 
-        $data['active'] = isset($request['active']);
-        //$data['published'] = isset($data['published']) ? true : false;
+        // Convert 'on' to 1, and null or absent to 0
 
+        $data = $request->only($this->columns);
+        $data['active'] = $request->has('active') ? 1 : 0;
         User::create($data);
-        return redirect('addUserForm');
+
+        return "stored";
+        //return redirect('userList');
     }
 
     /**
@@ -57,7 +70,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('editUser', compact('user'));
     }
 
     /**
@@ -74,5 +88,13 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function messages()
+    {
+        return [
+            'fullName.required' => 'Please enter your full name',
+            'userName.required' => 'Please enter your user name',
+        ];
     }
 }

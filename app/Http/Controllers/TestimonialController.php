@@ -43,7 +43,7 @@ class TestimonialController extends Controller
 
             'name' => 'required|string',
             'position' => 'required|string',
-            'content' => 'required|string|max:100',
+            'content' => 'required|string|min:10|max:100',
             'image' => 'required|mimes:png,jpg,jepg|max:2048',
 
         ], $messages);

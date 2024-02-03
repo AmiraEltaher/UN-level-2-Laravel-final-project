@@ -109,11 +109,12 @@
                                                             <td>{{$user->userName}}</td>
                                                             <td>{{$user->email}}</td>
                                                             <td> @if ($user->active)
-                                                                yes 👌
+                                                                Yes
                                                                 @else
-                                                                no 😒
+                                                                No
                                                                 @endif</td>
-                                                            <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
+
+                                                            <td><a href="{{ route('editUser', ['id' => $user->id]) }}"><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></a></td>
                                                         </tr>
                                                         @endforeach
 

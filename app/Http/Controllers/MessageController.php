@@ -59,7 +59,8 @@ class MessageController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $message = Message::findOrFail($id);
+        return view('showMessage', compact('message'));
     }
 
     /**
@@ -83,7 +84,8 @@ class MessageController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Message::where('id', $id)->forceDelete();
+        return redirect('messageList');
     }
 
     public function messages()
