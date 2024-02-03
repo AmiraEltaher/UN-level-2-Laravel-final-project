@@ -52,12 +52,9 @@ class TestimonialController extends Controller
         $fileName = $this->uploadFile($request->image, 'assets/admin/images');
 
         $data = $request->only($this->columns);
+
         $data['image'] =  $fileName;
         $data['published'] = $request->has('published') ? true : false;
-
-        //$data['active'] = isset($request['active']);
-        //$data['active'] = $request->has('active');
-
 
         Testimonial::create($data);
 
@@ -107,7 +104,7 @@ class TestimonialController extends Controller
     public function messages()
     {
         return [
-            'name.required' => 'Title is required',
+            'name.required' => 'Please enter testimonial name',
             'content.required' => 'should be text',
         ];
     }

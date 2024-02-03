@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('includes.adminHead')
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Rent Car Admin | Add User</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ asset('assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('assets/admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{ asset('assets/admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{{ asset('assets/admin/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="{{ asset('assets/admin/vendors/google-code-prettify/bin/prettify.min.css') }}" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="{{ asset('assets/admin/vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="{{ asset('assets/admin/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
+    <!-- starrr -->
+    <link href="{{ asset('assets/admin/vendors/starrr/dist/starrr.css') }}" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('assets/admin/build/css/custom.min.css') }}" rel="stylesheet">
+</head>
 
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
-
             @include('includes.adminLeftMenu')
 
             <!-- top navigation -->
@@ -60,26 +89,33 @@
                                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('storeUser') }}">
                                         @csrf
                                         <div class="item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Full Name <span class="required">*</span>
+                                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="fullName">Full Name <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <input type="text" id="first-name" required="required" class="form-control " name="fullName">
+                                                <input type="text" id="fullName" required="required" class="form-control " name="fullName" value="{{old('fullName')}}">
+                                                @error('fullName')
+                                                {{$message}}
+                                                @enderror
                                             </div>
-                                            @error ('fullName')
-                                            {{$message}}
-                                            @enderror
+
                                         </div>
                                         <div class="item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="user-name">Username <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <input type="text" id="user-name" name="userName" required="required" class="form-control">
+                                                <input type="text" id="user-name" name="userName" required="required" class="form-control" value="{{old('userName')}}">
+                                                @error('userName')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label for="email" class="col-form-label col-md-3 col-sm-3 label-align">Email <span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <input id="email" class="form-control" type="email" name="email" required="required">
+                                                <input id="email" class="form-control" type="email" name="email" required="required" value="{{old('email')}}">
+                                                @error('email')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -95,6 +131,9 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="password" id="password" name="password" required="required" class="form-control">
+                                                @error('password')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>
@@ -116,12 +155,52 @@
             <!-- /page content -->
 
             <!-- footer content -->
-            @include('includes.adminFooter')
+            <footer>
+                <div class="pull-right">
+                    Gentelella - Bootstrap Admin Template by <a href="{{ asset('https://colorlib.com') }}">Colorlib</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
             <!-- /footer content -->
         </div>
     </div>
 
-    @include('includes.jQuary')
+    <!-- jQuery -->
+    <script src="{{ asset('assets/admin/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('assets/admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- FastClick -->
+    <script src="{{ asset('assets/admin/vendors/fastclick/lib/fastclick.js') }}"></script>
+    <!-- NProgress -->
+    <script src="{{ asset('assets/admin/vendors/nprogress/nprogress.js') }}"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{{ asset('assets/admin/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
+    <!-- iCheck -->
+    <script src="{{ asset('assets/admin/vendors/iCheck/icheck.min.js') }}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ asset('assets/admin/vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="{{ asset('assets/admin/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendors/jquery.hotkeys/jquery.hotkeys.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendors/google-code-prettify/src/prettify.js') }}"></script>
+    <!-- jQuery Tags Input -->
+    <script src="{{ asset('assets/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js') }}"></script>
+    <!-- Switchery -->
+    <script src="{{ asset('assets/admin/vendors/switchery/dist/switchery.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('assets/admin/vendors/select2/dist/js/select2.full.min.js') }}"></script>
+    <!-- Parsley -->
+    <script src="{{ asset('assets/admin/vendors/parsleyjs/dist/parsley.min.js') }}"></script>
+    <!-- Autosize -->
+    <script src="{{ asset('assets/admin/vendors/autosize/dist/autosize.min.js') }}"></script>
+    <!-- jQuery autocomplete -->
+    <script src="{{ asset('assets/admin/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js') }}"></script>
+    <!-- starrr -->
+    <script src="{{ asset('assets/admin/vendors/starrr/dist/starrr.js') }}"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="{{ asset('assets/admin/build/js/custom.min.js') }}"></script>
+
 </body>
 
 </html>

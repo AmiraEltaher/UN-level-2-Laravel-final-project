@@ -94,6 +94,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" id="first-name" required="required" class="form-control " name="fullName" value="{{$user->fullName }}">
+
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -121,7 +122,7 @@
                                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="password">Password <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <input type="password" id="password" name="password" required="required" class="form-control" value="{{$user->password }}">
+                                                <input type="password" id="password" name="password" required="required" class="form-control">
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>

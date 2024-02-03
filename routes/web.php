@@ -34,7 +34,7 @@ Route::get('addUser', [UserController::class, 'create'])->name('addUser')->middl
 Route::post('storeUser', [UserController::class, 'store'])->name('storeUser')->middleware('verified');
 Route::get('userList', [UserController::class, 'index'])->name('userList')->middleware('verified');
 Route::get('editUser/{id}', [UserController::class, 'edit'])->name('editUser')->middleware('verified');
-Route::get('updateUser/{id}', [UserController::class, 'update'])->name('updateUser')->middleware('verified');
+Route::put('updateUser/{id}', [UserController::class, 'update'])->name('updateUser')->middleware('verified');
 Route::get('deleteUser/{id}', [UserController::class, 'destroy'])->name('deleteUser')->middleware('verified');
 
 

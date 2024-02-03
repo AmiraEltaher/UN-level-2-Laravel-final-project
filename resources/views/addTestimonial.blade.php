@@ -65,6 +65,9 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" id="name" required="required" class="form-control " name="name" value="{{old('name')}}">
+                                                @error ('name')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="item form-group">
