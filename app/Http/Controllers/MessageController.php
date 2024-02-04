@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Contactmail;
 use App\Models\Message;
 use Illuminate\Http\Request;
 
@@ -49,7 +50,10 @@ class MessageController extends Controller
         $data = $request->only($this->columns);
         Message::create($data);
 
-        dd($data);
+        Mail::to('amira_eltaher@gmail.com')->send(new Contactmail($data));
+        return redirect()->back()->with('success', 'Email sent successfully!');
+
+
 
         // return redirect('showMessage');
     }

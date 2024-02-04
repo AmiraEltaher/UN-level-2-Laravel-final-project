@@ -64,12 +64,16 @@ Route::get('deleteTestimonial/{id}', [TestimonialController::class, 'destroy'])-
 
 
 Route::get('addMessage', [MessageController::class, 'create'])->name('addMessage');
-Route::post('storeMessage', [MessageController::class, 'store'])->name('storeMessage')->middleware('verified');
+Route::post('storeMessage', [MessageController::class, 'store'])->name('storeMessage');
 Route::get('messageList', [MessageController::class, 'index'])->name('messageList')->middleware('verified');
 Route::get('showMessage/{id}', [MessageController::class, 'show'])->name('showMessage')->middleware('verified');
 Route::get('deleteMessage/{id}', [MessageController::class, 'destroy'])->name('deleteMessage')->middleware('verified');
 
 Route::get('index', [IndexController::class, 'create'])->name('index');
 Route::get('single', [IndexController::class, 'index'])->name('single');
+Route::get('listing', [IndexController::class, 'listing'])->name('listing');
+Route::get('testimonials', [IndexController::class, 'testimonials'])->name('testimonials');
+Route::get('blog', [IndexController::class, 'blog'])->name('blog');
+Route::get('about', [IndexController::class, 'about'])->name('about');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

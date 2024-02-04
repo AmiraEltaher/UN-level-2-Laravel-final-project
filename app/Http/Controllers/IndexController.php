@@ -30,9 +30,28 @@ class IndexController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function listing()
     {
-        //
+        $testimonials = Testimonial::all();
+        $cars = Car::all();
+        return view('listing', ['testimonials' => $testimonials],  ['cars' => $cars]);
+    }
+
+    public function testimonials()
+    {
+        $testimonials = Testimonial::all();
+
+        return view('testimonials', ['testimonials' => $testimonials]);
+    }
+    public function blog()
+    {
+
+        return view('blog');
+    }
+    public function about()
+    {
+
+        return view('about');
     }
 
     /**
