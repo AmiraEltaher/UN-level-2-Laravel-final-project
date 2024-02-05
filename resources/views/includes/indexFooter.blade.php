@@ -8,7 +8,7 @@
                     <li><a href="#"><span class="icon-facebook"></span></a></li>
                     <li><a href="#"><span class="icon-instagram"></span></a></li>
                     <li><a href="#"><span class="icon-twitter"></span></a></li>
-                    <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                    <li><a href="{{ asset('https://www.linkedin.com/in/amira-eltaher-144b30114/')}}"><span class="icon-linkedin"></span></a></li>
                 </ul>
             </div>
             <div class="col-lg-8 ml-auto">
@@ -16,41 +16,41 @@
                     <div class="col-lg-3">
                         <h2 class="footer-heading mb-4">Quick Links</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="{{ route('about')}}">About Us</a></li>
+                            <li><a href="{{ route('testimonials')}}">Testimonials</a></li>
                             <li><a href="#">Terms of Service</a></li>
                             <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{ route('addMessage')}}">Contact Us</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3">
                         <h2 class="footer-heading mb-4">Resources</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="{{ route('about')}}">About Us</a></li>
+                            <li><a href="{{ route('testimonials')}}">Testimonials</a></li>
                             <li><a href="#">Terms of Service</a></li>
                             <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{ route('addMessage')}}">Contact Us</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3">
                         <h2 class="footer-heading mb-4">Support</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="{{ route('about')}}">About Us</a></li>
+                            <li><a href="{{ route('testimonials')}}">Testimonials</a></li>
                             <li><a href="#">Terms of Service</a></li>
                             <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{ route('addMessage')}}">Contact Us</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-3">
                         <h2 class="footer-heading mb-4">Company</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="{{ route('about')}}">About Us</a></li>
+                            <li><a href="{{ route('testimonials')}}">Testimonials</a></li>
                             <li><a href="#">Terms of Service</a></li>
                             <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{ route('addMessage')}}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>

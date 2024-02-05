@@ -170,8 +170,9 @@
                                 </div>
                             </div>
                             <div>
-                                <p>{{$car->content}}</p>
-                                <p><a href="{{route('single')}}" class="btn btn-primary btn-sm">Rent Now</a></p>
+
+                                <p> {{ strlen($car->content) > 100 ? substr(htmlspecialchars($car->content), 0, 100) . '...' : htmlspecialchars($car->content) }}</p>
+                                <p><a href="{{ route('single', ['id' => $car->id]) }}" class="btn btn-primary btn-sm">Rent Now</a></p>
                             </div>
                         </div>
 
@@ -181,6 +182,9 @@
 
 
             </div>
+
+
+
         </div>
     </div>
 
@@ -286,7 +290,7 @@
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <div class="testimonial-2">
                         <blockquote class="mb-4">
-                            <p>{{ $testimonial->content}}</p>
+                            <p>{{ strlen($testimonial->content) > 100 ? substr(htmlspecialchars($testimonial->content), 0, 100) . '...' : htmlspecialchars($testimonial->content) }}</p>
                         </blockquote>
                         <div class="d-flex v-card align-items-center">
 

@@ -13,6 +13,7 @@ class Message extends Model
         'lastName',
         'email',
         'message',
+        'read',
 
     ];
     use HasFactory;

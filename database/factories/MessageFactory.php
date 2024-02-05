@@ -21,6 +21,7 @@ class MessageFactory extends Factory
             'lastName'         => fake()->name(),
             'email'   => fake()->email(),
             'message'   => fake()->text(),
+            'read'   => 1,
         ];
     }
 }

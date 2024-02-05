@@ -70,7 +70,7 @@ Route::get('showMessage/{id}', [MessageController::class, 'show'])->name('showMe
 Route::get('deleteMessage/{id}', [MessageController::class, 'destroy'])->name('deleteMessage')->middleware('verified');
 
 Route::get('index', [IndexController::class, 'create'])->name('index');
-Route::get('single', [IndexController::class, 'index'])->name('single');
+Route::get('single/{id}', [IndexController::class, 'show'])->name('single');
 Route::get('listing', [IndexController::class, 'listing'])->name('listing');
 Route::get('testimonials', [IndexController::class, 'testimonials'])->name('testimonials');
 Route::get('blog', [IndexController::class, 'blog'])->name('blog');

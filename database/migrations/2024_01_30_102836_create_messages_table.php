@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('lastName', 100);
             $table->string('email');
             $table->text('message');
+            $table->boolean('read');
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
 use App\Models\Car;
+use App\Models\Category;
 use App\Models\Index;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('single');
     }
 
     /**
@@ -33,7 +33,9 @@ class IndexController extends Controller
     public function listing()
     {
         $testimonials = Testimonial::all();
-        $cars = Car::all();
+        $cars = Car::where('active', 1)->paginate(6);
+
+
         return view('listing', ['testimonials' => $testimonials],  ['cars' => $cars]);
     }
 
@@ -59,7 +61,9 @@ class IndexController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $categoriesWithCounts = Category::withCount('cars')->get();
+        $car = Car::findOrFail($id);
+        return view('single', compact('car', 'categoriesWithCounts'));
     }
 
     /**

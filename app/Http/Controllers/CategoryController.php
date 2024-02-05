@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,8 +15,9 @@ class CategoryController extends Controller
 
     public function index()
     {
+        $messages = Message::all();
         $categories = Category::get();
-        return view('categoryList', compact('categories'));
+        return view('categoryList', compact('categories', 'messages'));
     }
 
     /**
@@ -23,7 +25,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('addCategory');
+        $messages = Message::all();
+        return view('addCategory', compact('messages'));
     }
 
     /**
@@ -50,8 +53,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
+        $messages = Message::all();
         $category = Category::findOrFail($id);
-        return view('editCategory', compact('category'));
+        return view('editCategory', compact('category', 'messages'));
     }
 
     /**

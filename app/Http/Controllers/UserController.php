@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,9 +21,9 @@ class UserController extends Controller
     ];
     public function index()
     {
-        // return view('addUserForm');
+        $messages = Message::all();
         $users = User::get();
-        return view('userList', compact('users'));
+        return view('userList', compact('users', 'messages'));
     }
 
     /**
@@ -30,7 +31,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('addUser');
+        $messages = Message::all();
+        return view('addUser', compact('messages'));
     }
 
     /**
@@ -38,7 +40,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+
         $messages = $this->messages();
 
         $data = $request->validate([
@@ -50,18 +52,16 @@ class UserController extends Controller
 
         ], $messages);
 
+        $data['password'] = Hash::make($request['password']);
 
         $data = $request->only($this->columns);
 
         // Convert 'on' to 1, and null or absent to 0
         $data['active'] = $request->has('active') ? true : false;
-
-        $data['password'] = Hash::make($request['password']);
-        //$data['password'] = bcrypt($data['password']);
-
+        $data['email_verified_at']  = now();
         User::create($data);
-        return "stored";
-        // return redirect('userList');
+
+        return redirect('userList');
     }
 
     /**
@@ -76,8 +76,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+        $messages = Message::all();
         $user = User::findOrFail($id);
-        return view('editUser', compact('user'));
+        return view('editUser', compact('user', 'messages'));
     }
 
 
@@ -94,14 +95,15 @@ class UserController extends Controller
             'fullName' => 'required|string',
             'userName' => 'required|string',
             'email' => 'required|email',
-            'password' => 'sometimes|required|min:8|confirmed',
+            'password' => 'required|min:8|',
         ]);
 
-        // Update other fields
-        $data['active'] = $request->has('active');
 
-        // Update the user's information
-        $user->update($data);
+        $data['active'] = $request->has('active');
+        //$data['password'] = Hash::make($request['password']);
+
+        //$user->update($data);
+        User::where('id', $id)->update($data);
 
         // Check if a new password is provided and update it
         if ($request->filled('password')) {
@@ -109,12 +111,6 @@ class UserController extends Controller
         }
 
         return redirect('userList');
-        /* $data = $request->only($this->columns);
-        $data['active'] = isset($data['active']) ? true : false;
-
-
-        User::where('id', $id)->update($data);
-        return redirect('userList');*/
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use App\Traits\Common;
 
@@ -20,8 +21,9 @@ class TestimonialController extends Controller
     ];
     public function index()
     {
+        $messages = Message::all();
         $testimonials = Testimonial::get();
-        return view('testimonialList', compact('testimonials'));
+        return view('testimonialList', compact('testimonials', 'messages'));
     }
 
     /**
@@ -29,7 +31,8 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        return view('addTestimonial');
+        $messages = Message::all();
+        return view('addTestimonial', compact('messages'));
     }
 
     /**
@@ -43,7 +46,7 @@ class TestimonialController extends Controller
 
             'name' => 'required|string',
             'position' => 'required|string',
-            'content' => 'required|string|min:10|max:100',
+            'content' => 'required|string|min:100',
             'image' => 'required|mimes:png,jpg,jepg|max:2048',
 
         ], $messages);
@@ -74,8 +77,9 @@ class TestimonialController extends Controller
      */
     public function edit(string $id)
     {
+        $messages = Message::all();
         $testimonial = Testimonial::findOrFail($id);
-        return view('editTestimonial', compact('testimonial'));
+        return view('editTestimonial', compact('testimonial', 'messages'));
     }
 
     /**
@@ -83,10 +87,26 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->only($this->columns);
-        $data['published'] = isset($data['published']) ? true : false;
+        $messages = $this->messages();
+
+        $data = $request->validate([
+
+            'name' => 'required|string',
+            'position' => 'required|string',
+            'content' => 'required|string|min:100',
+            'image' => 'required|mimes:png,jpg,jepg|max:2048',
+
+        ], $messages);
+
+
         $fileName = $this->uploadFile($request->image, 'assets/admin/images');
+
+
+
         $data['image'] =  $fileName;
+        $data['published'] = $request->has('published') ? true : false;
+
+
 
         Testimonial::where('id', $id)->update($data);
         return redirect('testimonialList');
@@ -105,7 +125,7 @@ class TestimonialController extends Controller
     {
         return [
             'name.required' => 'Please enter testimonial name',
-            'content.required' => 'should be text',
+            'content.required' => 'should be minimum 100 character ',
         ];
     }
 }

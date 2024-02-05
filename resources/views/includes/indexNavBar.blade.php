@@ -17,7 +17,7 @@
                 <div class="col-3">
                     <div class="site-logo">
 
-                        <a href="{{route('home')}}"><strong>CarRental</strong></a>
+                        <a href="{{route('index')}}"><strong>CarRental</strong></a>
                     </div>
                 </div>
 
@@ -27,12 +27,12 @@
 
                     <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                         <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                            <li class="active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
-                            <li><a href="listing.html" class="nav-link">Listing</a></li>
-                            <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-                            <li><a href="blog.html" class="nav-link">Blog</a></li>
-                            <li><a href="about.html" class="nav-link">About</a></li>
-                            <li><a href="contact.html" class="nav-link">Contact</a></li>
+                            <li class="{{ request()->routeIs('index') ? 'active' : '' }}"><a href="{{route('index')}}" class="nav-link">Home</a></li>
+                            <li class="{{ request()->routeIs('listing') ? 'active' : '' }}"><a href="{{route('listing')}}" class="nav-link">Listing</a></li>
+                            <li class="{{ request()->routeIs('testimonials') ? 'active' : '' }}"><a href="{{route('testimonials')}}" class="nav-link">Testimonials</a></li>
+                            <li class="{{ request()->routeIs('blog') ? 'active' : '' }}"><a href="{{route('blog')}}" class="nav-link">Blog</a></li>
+                            <li class="{{ request()->routeIs('about') ? 'active' : '' }}"><a href="{{route('about')}}" class="nav-link">About</a></li>
+                            <li class="{{ request()->routeIs('addMessage') ? 'active' : '' }}"><a href="{{route('addMessage')}}" class="nav-link">Contact</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -129,7 +129,7 @@
                                             <label class="col-form-label col-md-3 col-sm-3 label-align"> Active</label>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" class="flat" @if($car->active) checked @endif >
+                                                    <input type="checkbox" class="flat" name="active" @if($car->active) checked @endif >
                                                 </label>
                                             </div>
                                         </div>
@@ -164,7 +164,7 @@
                                         <div class="ln_solid"></div>
                                         <div class="item form-group">
                                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                                <button class="btn btn-primary" type="button">Cancel</button>
+                                                <a href="{{ route('carList')}}"><button class="btn btn-primary" type="button">Cancel</button></a>
                                                 <button type="submit" class="btn btn-success">Update</button>
                                             </div>
                                         </div>

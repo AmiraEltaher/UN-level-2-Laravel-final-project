@@ -19,7 +19,7 @@
 
                     <div class="intro">
                         <h1><strong>Testimonials</strong></h1>
-                        <div class="custom-breadcrumbs"><a href="index.html">Home</a> <span class="mx-2">/</span> <strong>Testimonials</strong></div>
+                        <div class="custom-breadcrumbs"><a href="{{route('index')}}">Home</a> <span class="mx-2">/</span> <strong>Testimonials</strong></div>
                     </div>
 
                 </div>
@@ -43,7 +43,7 @@
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <div class="testimonial-2">
                         <blockquote class="mb-4">
-                            <p>{{ $testimonial->content}}</p>
+                            <p>{{ strlen($testimonial->content) > 100 ? substr(htmlspecialchars($testimonial->content), 0, 100) . '...' : htmlspecialchars($testimonial->content) }}</p>
                         </blockquote>
                         <div class="d-flex v-card align-items-center">
 

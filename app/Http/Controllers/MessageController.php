@@ -14,6 +14,7 @@ class MessageController extends Controller
         'lastName',
         'email',
         'message',
+        'read',
 
 
     ];
@@ -47,8 +48,18 @@ class MessageController extends Controller
 
         ], $messages);
 
-        $data = $request->only($this->columns);
-        Message::create($data);
+        // $data = $request->only($this->columns);
+        $data['read'] = 0;
+
+        try {
+            Message::create($data);
+        } catch (\Exception $e) {
+            // Log or dd the exception to identify the issue
+            dd($e->getMessage());
+        }
+        // dd($data);
+
+        // Message::create($data);
 
         Mail::to('amira_eltaher@gmail.com')->send(new Contactmail($data));
         return redirect()->back()->with('success', 'Email sent successfully!');
@@ -63,8 +74,10 @@ class MessageController extends Controller
      */
     public function show(string $id)
     {
+        $messages = Message::all();
         $message = Message::findOrFail($id);
-        return view('showMessage', compact('message'));
+        $message->update(['read' => 1]);
+        return view('showMessage', compact('message', 'messages'));
     }
 
     /**
