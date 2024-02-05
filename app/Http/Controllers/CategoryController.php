@@ -34,7 +34,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only($this->columns);
+        $messages = $this->messages();
+
+        $data = $request->validate([
+
+            'category_name' => 'required|string',
+
+        ], $messages);
+
+
         Category::create($data);
 
         return redirect('categoryList');
@@ -63,8 +71,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $messages = $this->messages();
+        $data = $request->validate([
 
-        $data = $request->only($this->columns);
+            'category_name' => 'required|string',
+
+        ], $messages);
 
         Category::where('id', $id)->update($data);
 
@@ -78,5 +90,13 @@ class CategoryController extends Controller
     {
         Category::where('id', $id)->delete();
         return redirect('categoryList');
+    }
+
+    public function messages()
+    {
+        return [
+            'category_name.required' => 'Please enter category name',
+
+        ];
     }
 }

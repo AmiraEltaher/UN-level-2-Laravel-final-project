@@ -94,7 +94,9 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" id="first-name" required="required" class="form-control " name="fullName" value="{{$user->fullName }}">
-
+                                                @error('fullName')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -102,12 +104,18 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" id="user-name" required="required" class="form-control" name="userName" value="{{$user->userName }}">
+                                                @error('userName')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="item form-group">
                                             <label for="email" class="col-form-label col-md-3 col-sm-3 label-align">Email <span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input id="email" class="form-control" type="email" name="email" required="required" value="{{$user->email }}">
+                                                @error('email')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -122,7 +130,8 @@
                                             <label class="col-form-label col-md-3 col-sm-3 label-align" for="password">Password <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
-                                                <input type="password" id="password" name="password" required="required" class="form-control">
+                                                <input type="password" id="password" name="password" class="form-control">
+
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>

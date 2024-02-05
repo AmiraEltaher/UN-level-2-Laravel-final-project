@@ -64,9 +64,7 @@ class CarController extends Controller
             'doors' => 'required|numeric',
             'passengers' => 'required|numeric',
             'price' => 'required|numeric',
-
             'image' => 'required|mimes:png,jpg,jepg|max:2048',
-
             'category_id' => 'required|exists:categories,id',
 
         ], $messages);
@@ -156,6 +154,12 @@ class CarController extends Controller
         return [
             'carTitle.required' => 'Title is required',
             'content.required' => 'should be text',
+            'luggage.required' => 'please enter the number of luggage',
+            'doors.required' => 'please enter the number of doors',
+            'passengers.required' => 'please enter the number of passengers',
+            'price.required' => 'please enter the price',
+            'image.required' => 'please enter the image',
+            'category_id.required' => 'please enter the category',
         ];
     }
 }

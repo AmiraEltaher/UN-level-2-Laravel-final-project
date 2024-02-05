@@ -92,6 +92,9 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" id="name" required="required" class="form-control " name="name" value="{{$testimonial->name }}">
+                                                @error('name')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -99,6 +102,9 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" id="position" required="required" class="form-control " name="position" value="{{$testimonial->position }}">
+                                                @error('position')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="item form-group">
@@ -106,6 +112,9 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <textarea id="content" name="content" required="required" class="form-control">{{$testimonial->content }}</textarea>
+                                                @error('content')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -122,13 +131,16 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="file" id="image" name="image" required="required" class="form-control">
+                                                @error('image')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>
                                         <div class="item form-group">
                                             <div class="col-md-6 col-sm-6 offset-md-3">
                                                 <a href="{{ route('testimonialList')}}"><button class="btn btn-primary" type="button">Cancel</button></a>
-                                                <button type="submit" class="btn btn-success">Add</button>
+                                                <button type="submit" class="btn btn-success">Edit</button>
                                             </div>
                                         </div>
 

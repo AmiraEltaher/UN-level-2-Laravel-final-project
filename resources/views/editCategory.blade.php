@@ -92,6 +92,9 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 ">
                                                 <input type="text" id="add-category" required="required" class="form-control " name="category_name" value="{{$category->category_name}}">
+                                                @error('category_name')
+                                                {{$message}}
+                                                @enderror
                                             </div>
                                         </div>
 

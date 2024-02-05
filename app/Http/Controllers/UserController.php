@@ -95,20 +95,20 @@ class UserController extends Controller
             'fullName' => 'required|string',
             'userName' => 'required|string',
             'email' => 'required|email',
-            'password' => 'required|min:8|',
+
         ]);
 
 
         $data['active'] = $request->has('active');
         //$data['password'] = Hash::make($request['password']);
 
-        //$user->update($data);
-        User::where('id', $id)->update($data);
-
         // Check if a new password is provided and update it
         if ($request->filled('password')) {
             $user->update(['password' => bcrypt($request->password)]);
         }
+
+
+        User::where('id', $id)->update($data);
 
         return redirect('userList');
     }

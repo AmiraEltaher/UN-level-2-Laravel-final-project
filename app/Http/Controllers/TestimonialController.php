@@ -126,6 +126,8 @@ class TestimonialController extends Controller
         return [
             'name.required' => 'Please enter testimonial name',
             'content.required' => 'should be minimum 100 character ',
+            'position.required' => 'Please enter testimonial position',
+            'image.required' => 'Please enter testimonial image',
         ];
     }
 }
